@@ -1,1 +1,24 @@
 ---
+- name: PRIME FIREWALLD ON IDM SERVER
+  hosts: all
+  become: yes
+  connection: local
+
+  tasks:
+  - name: OPEN LDAP SERVICE
+    firewalld:
+      service: freeipa-ldap
+      permanent: yes
+      state: enabled
+
+  - name: OPEN LDAPS SERVICE
+    firewalld:
+      service: freeipa-ldaps
+      permanent: yes
+      state: enabled
+
+  - name: OPEN LDAPS SERVICE
+    firewalld:
+      service: dns
+      permanent: yes
+      state: enabled
