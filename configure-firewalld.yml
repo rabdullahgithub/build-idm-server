@@ -2,7 +2,7 @@
 - name: PRIME FIREWALLD ON IDM SERVER
   hosts: all
   become: yes
-  connection: remote
+  connection: ssh
 
   tasks:
   - name: OPEN LDAP SERVICE
