@@ -11,7 +11,6 @@
       permanent: yes
       state: enabled
       zone: public
-    become: yes
 
   - name: OPEN LDAPS SERVICE
     firewalld:
@@ -19,7 +18,6 @@
       permanent: yes
       state: enabled
       zone: public
-    become: yes
 
   - name: OPEN LDAPS SERVICE
     firewalld:
@@ -27,4 +25,3 @@
       permanent: yes
       state: enabled
       zone: public
-    become: yes
