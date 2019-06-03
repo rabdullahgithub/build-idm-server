@@ -10,15 +10,18 @@
       service: freeipa-ldap
       permanent: yes
       state: enabled
+      zone: public
 
   - name: OPEN LDAPS SERVICE
     firewalld:
       service: freeipa-ldaps
       permanent: yes
       state: enabled
+      zone: public
 
   - name: OPEN LDAPS SERVICE
     firewalld:
       service: dns
       permanent: yes
       state: enabled
+      zone: public
