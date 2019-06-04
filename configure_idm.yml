@@ -5,9 +5,12 @@
   connection: ssh
 
   tasks:
+  - name: SET HOSTNAME
+    command: 'hostnamectl set-hostname "{{ my_fqdn }}"'
+
   - name: CONFIGURE IDM
-    command: "ipa-server-install -a {{ my_ipa_admin_password }} --hostname=idm2.example.com -n example.com -p {{ my_kerberos_master_password }} -r EXAMPLE.COM -U"
-    notify: restart sshd
+    command: "ipa-server-install -a {{ my_ipa_admin_password }} --hostname={{ my_fqdn }} -n example.com -p {{ my_kerberos_master_password }} -r EXAMPLE.COM -U"
+    notify: restart-sshd
 
   - name: KINIT ADMIN
     command: kinit admin
@@ -20,5 +23,5 @@
     command: "{{ my_kerberos_master_password }}"
 
   handlers:
-    - name: RESTART SSHD
+    - name: restart-sshd
       service: name=sshd state=restarted
