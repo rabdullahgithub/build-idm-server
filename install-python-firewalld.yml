@@ -1,6 +1,6 @@
 ---
 - name: INSTALL PYTHON-FIREWALLD
-#  hosts: localhost
+  hosts: all
 #  become: yes
   connection: ssh
 
