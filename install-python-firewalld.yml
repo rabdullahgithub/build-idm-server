@@ -1,0 +1,11 @@
+---
+- name: INSTALL PYTHON-FIREWALLD
+  hosts: localhost
+  become: yes
+  connection: ssh
+
+  tasks:
+  - name: INSTALL PYTHON-FIREWALLD
+    yum:
+      name: python-firewalld
+      state: present
