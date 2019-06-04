@@ -1,0 +1,13 @@
+---
+- name: INSTALL IDM AND RUN IDM SCRIPT
+  hosts: all
+#  become: yes
+  connection: ssh
+
+  tasks:
+  - name: INSTALL IDM
+    yum:
+      name: ipa-server
+      state: present
+  - name: RUN IDM SCRIPT
+    command: ipa-server-install -a V1rtu8l! --hostname=idm2.example.com -n example.com -p V1rtu8l!    
