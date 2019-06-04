@@ -6,8 +6,18 @@
 
   tasks:
   - name: CONFIGURE IDM
-    command: ipa-server-install -a {{ my_ipa_admin_password }} --hostname=idm2.example.com -n example.com -p {{ my_kerberos_master_password }} -r EXAMPLE.COM -U
+    command: "ipa-server-install -a {{ my_ipa_admin_password }} --hostname=idm2.example.com -n example.com -p {{ my_kerberos_master_password }} -r EXAMPLE.COM -U"
     notify: restart sshd
+
+  - name: KINIT ADMIN
+    command: kinit admin
+
+  - name: PAUSE BEFORE SENDING PASSWORD
+    wait_for:
+      delay: 5
+
+  - name: SEND PASSWORD
+    command: "{{ my_kerberos_master_password }}"
 
   handlers:
     - name: RESTART SSHD
