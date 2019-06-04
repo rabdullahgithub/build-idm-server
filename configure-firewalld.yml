@@ -25,3 +25,9 @@
       permanent: yes
       state: enabled
       zone: public
+    notify: restart firewalld
+
+  handlers:
+    - name: restart firewalld
+      service: name=firewalld state=restarted
+      
