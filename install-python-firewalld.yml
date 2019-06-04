@@ -7,5 +7,5 @@
   tasks:
   - name: INSTALL PYTHON-FIREWALLD
     yum:
-      name: python-firewalld
+      name: python-firewall
       state: present
