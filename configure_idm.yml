@@ -1,0 +1,14 @@
+---
+- name: CONFIGURE AND RESTART IDM
+  hosts: all
+#  become: yes
+  connection: ssh
+
+  tasks:
+  - name: CONFIGURE IDM
+    command: ipa-server-install -a {{ my_ipa_admin_password }} --hostname=idm2.example.com -n example.com -p {{ my_kerberos_master_password }} -r EXAMPLE.COM -U
+    notify: restart sshd
+
+  handlers:
+    - name: RESTART SSHD
+      service: name=sshd state=restarted

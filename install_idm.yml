@@ -9,5 +9,3 @@
     yum:
       name: ipa-server
       state: present
-  - name: RUN IDM SCRIPT
-    command: ipa-server-install -a V1rtu8l! --hostname=idm2.example.com -n example.com -p V1rtu8l!    
