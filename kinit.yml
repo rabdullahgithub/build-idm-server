@@ -13,8 +13,8 @@
       expect ":"
       send "{{ my_kerberos_master_password }}"
       interact
-    args:
-      executable: /usr/bin/expect
+#    args:
+#      executable: /usr/bin/expect
     register: shelloutput
 
   - name: OUTPUT SCRIPT DETAIL
