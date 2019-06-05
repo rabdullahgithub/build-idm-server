@@ -13,7 +13,7 @@
       expect "Password for admin@EXAMPLE.COM: "
       send "{{ my_kerberos_master_password }}"
     args:
-      executable: /usr/bin/expect
+      executable: /usr/bin/bash
     register: shelloutput
 
   - name: OUTPUT SCRIPT DETAIL
