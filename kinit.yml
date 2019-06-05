@@ -6,12 +6,27 @@
   gather_facts: no
 
   tasks:
-  - name: INSTALL PEXPECT REQUIRED FOR EXPECT MODULE
-    yum:
-      name: pexpect
-      state: latest
-  - name: KINIT ADMIN
-    expect:
-      command: kinit admin
-      responses:
-        (?i)password: "{{ my_kerberos_master_password }}"
+  - name: EXECUTE EXPECT TO GENERATE KERBEROS TICKET
+    shell: |
+#      set timeout 300
+      kinit admin
+      expect "Password for admin@EXAMPLE.COM: "
+      send "{{ my_kerberos_master_password }}"\r
+    args:
+      executable: /usr/bin/expect
+    register: shelloutput
+
+  - name: EXECUTE EXPECT TO GENERATE KERBEROS TICKET
+    debug:
+      msg: {{ shelloutput }}
+
+
+#  - name: INSTALL PEXPECT REQUIRED FOR EXPECT MODULE
+#    yum:
+#      name: pexpect
+#      state: latest
+#  - name: KINIT ADMIN
+#    expect:
+#      command: kinit admin
+#      responses:
+#        (?i)password: "{{ my_kerberos_master_password }}"
