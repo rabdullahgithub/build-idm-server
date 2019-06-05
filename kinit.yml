@@ -6,11 +6,7 @@
 
   tasks:
   - name: KINIT ADMIN
-    raw: kinit admin
-
-  - name: PAUSE BEFORE SENDING PASSWORD
-    wait_for:
-      delay: 5
-
-  - name: SEND PASSWORD
-    raw: "{{ my_kerberos_master_password }}"
+    expect:
+      command: kinit admin
+      responses:
+        (?i)password: "{{ my_kerberos_master_password }}"
