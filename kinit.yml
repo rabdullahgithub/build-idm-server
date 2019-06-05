@@ -8,12 +8,12 @@
   tasks:
   - name: EXECUTE EXPECT TO GENERATE KERBEROS TICKET
     shell: |
-      set timeout 60
-      kinit admin
+#      set timeout 60
+      send "kinit admin"
       expect "Password for admin@EXAMPLE.COM: "
       send "{{ my_kerberos_master_password }}"
     args:
-      executable: /usr/bin/bash
+      executable: /usr/bin/expect
     register: shelloutput
 
   - name: OUTPUT SCRIPT DETAIL
