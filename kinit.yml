@@ -8,7 +8,7 @@
   tasks:
   - name: EXECUTE EXPECT TO GENERATE KERBEROS TICKET
     shell: |
-#      set timeout 300
+      set timeout 60
       kinit admin
       expect "Password for admin@EXAMPLE.COM: "
       send "{{ my_kerberos_master_password }}"\r
