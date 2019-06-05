@@ -11,12 +11,12 @@
       set timeout 60
       kinit admin
       expect "Password for admin@EXAMPLE.COM: "
-      send "{{ my_kerberos_master_password }}"\r
+      send "{{ my_kerberos_master_password }}"
     args:
       executable: /usr/bin/expect
     register: shelloutput
 
-  - name: EXECUTE EXPECT TO GENERATE KERBEROS TICKET
+  - name: OUTPUT SCRIPT DETAIL
     debug:
       msg: "{{ shelloutput }}"
 
