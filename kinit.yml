@@ -9,9 +9,10 @@
   - name: EXECUTE EXPECT TO GENERATE KERBEROS TICKET
     shell: |
 #      set timeout 60
-      send kinit admin
-      expect "Password for admin@EXAMPLE.COM: "
+      spawn kinit admin
+      expect ":"
       send "{{ my_kerberos_master_password }}"
+      interact
     args:
       executable: /usr/bin/expect
     register: shelloutput
