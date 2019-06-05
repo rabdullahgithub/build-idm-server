@@ -1,11 +1,15 @@
 ---
-- name: CONFIGURE AND RESTART IDM
+- name: CONFIGURE KINIT
   hosts: all
 #  become: yes
   connection: ssh
   gather_facts: no
-  
+
   tasks:
+  - name: INSTALL PEXPECT REQUIRED FOR EXPECT MODULE
+    yum:
+      name: pexpect
+      state: latest
   - name: KINIT ADMIN
     expect:
       command: kinit admin
