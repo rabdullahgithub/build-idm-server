@@ -3,7 +3,8 @@
   hosts: all
 #  become: yes
   connection: ssh
-
+  gather_facts: no
+  
   tasks:
   - name: KINIT ADMIN
     expect:
